@@ -52,7 +52,7 @@ resource "null_resource" "yarn_build" {
 
   provisioner "local-exec" {
     working_dir = "./demo-service"
-    command     = "podman build -t  --platform linux/amd64 ${local.project}-demo-service ."
+    command     = "podman build -t ${local.project}-demo-service . --platform linux/amd64"
   }
 
   provisioner "local-exec" {
