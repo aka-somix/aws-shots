@@ -75,7 +75,3 @@ resource "aws_batch_job_queue" "demo" {
     aws_batch_compute_environment.demo.arn
   ]
 }
-
-#
-# AWS Batch Demo Job Definition
-#
