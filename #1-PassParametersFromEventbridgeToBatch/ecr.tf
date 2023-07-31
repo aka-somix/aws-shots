@@ -6,7 +6,7 @@ resource "aws_ecr_repository" "demo" {
   }
 
   encryption_configuration {
-    encryption_type = "AES-256"
+    encryption_type = "AES256"
   }
 }
 
@@ -47,22 +47,22 @@ resource "null_resource" "yarn_build" {
 
   provisioner "local-exec" {
     working_dir = "./demo-service"
-    command     = "aws ecr get-login-password --region ${var.aws_region} | docker login --username AWS --password-stdin ${data.aws_caller_identity.current.account_id}.dkr.ecr.eu-west-1.amazonaws.com"
+    command     = "aws ecr get-login-password --region ${var.aws_region} | podman login --username AWS --password-stdin ${data.aws_caller_identity.current.account_id}.dkr.ecr.eu-west-1.amazonaws.com"
   }
 
   provisioner "local-exec" {
     working_dir = "./demo-service"
-    command     = "docker build -t ${local.project}-demo-service ."
+    command     = "podman build -t  --platform linux/amd64 ${local.project}-demo-service ."
   }
 
   provisioner "local-exec" {
     working_dir = "./demo-service"
-    command     = "docker tag ${local.project}-demo-service:latest ${data.aws_caller_identity.current.account_id}.dkr.ecr.eu-west-1.amazonaws.com/${local.project}-demo-service:latest"
+    command     = "podman tag ${local.project}-demo-service:latest ${data.aws_caller_identity.current.account_id}.dkr.ecr.eu-west-1.amazonaws.com/${local.project}-demo-service:latest"
   }
 
   provisioner "local-exec" {
     working_dir = "./demo-service"
-    command     = "docker push  ${data.aws_caller_identity.current.account_id}.dkr.ecr.eu-west-1.amazonaws.com/${local.project}-demo-service:latest"
+    command     = "podman push  ${data.aws_caller_identity.current.account_id}.dkr.ecr.eu-west-1.amazonaws.com/${local.project}-demo-service:latest"
   }
 
 }

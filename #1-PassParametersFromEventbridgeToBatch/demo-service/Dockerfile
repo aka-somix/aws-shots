@@ -1,8 +1,8 @@
 # Download base image
-FROM python:3.10.9-slim
+FROM bash:5
 # Copy source code
-COPY ./main.sh /app
+COPY ./main.sh /app/main.sh
 # Give Execution permissions
 RUN chmod +x /app/main.sh
 # Exec script
-CMD sh /app/main.sh
+CMD /app/main.sh

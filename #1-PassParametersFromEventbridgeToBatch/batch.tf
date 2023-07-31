@@ -22,13 +22,13 @@ resource "aws_batch_compute_environment" "demo" {
   service_role = aws_iam_role.compute_environment.arn
   type         = "MANAGED"
 
-  depends_on = [aws_iam_role_policy_attachment.ingestion_ce_batch_service_role]
+  depends_on = [aws_iam_role_policy_attachment.service_role]
 }
 
 # security group for batch compute environment
 resource "aws_security_group" "compute_environment" {
   name   = "${local.project}-security-group"
-  vpc_id = var.aws_vpc_mps_default.id
+  vpc_id = data.aws_vpc.main.id
 
   egress {
     from_port   = 0

@@ -7,10 +7,10 @@ resource "aws_batch_job_definition" "demo" {
 
   container_properties = <<CONTAINER_PROPERTIES
   {
-    "image": "${aws_ecr_repository.contracts.repository_url}:latest",
+    "image": "${aws_ecr_repository.demo.repository_url}:latest",
     "resourceRequirements": [
       {"type": "VCPU", "value": "0.5"},
-      {"type": "MEMORY", "value": "1"}
+      {"type": "MEMORY", "value": "1024"}
     ],
     "executionRoleArn": "${aws_iam_role.task_exec.arn}",
     "jobRoleArn": "${aws_iam_role.service.arn}"
