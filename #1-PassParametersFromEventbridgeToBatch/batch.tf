@@ -3,7 +3,7 @@
 # Compute Environment for AWS Batch
 #
 resource "aws_batch_compute_environment" "demo" {
-  compute_environment_name = "${local.resource_prefix}-ingestion-fargate-compute-env"
+  compute_environment_name = "${local.project}-fargate-ce"
 
   compute_resources {
     max_vcpus = 1
@@ -62,7 +62,6 @@ resource "aws_iam_role_policy_attachment" "service_role" {
   role       = aws_iam_role.compute_environment.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSBatchServiceRole"
 }
-
 
 #
 # AWS Batch Queue to schedule job into

@@ -1,14 +1,13 @@
 
-
 resource "aws_cloudwatch_event_target" "submit_contracts_batch_job" {
   rule      = aws_cloudwatch_event_rule.on_contract_batch_upload.name
-  arn       = var.ingestion_queue.arn
-  target_id = "SubmitContractsBatchJob"
-  role_arn  = var.aws_iam_role_batch_job_submitter.arn
+  arn       = aws_batch_job_queue.demo.arn
+  target_id = "SubmitCustomBatchJob"
+  role_arn  = "TODO"
 
   batch_target {
-    job_definition = aws_batch_job_definition.history_ingestion.arn
-    job_name       = local.job_name
+    job_definition = aws_batch_job_definition.demo.arn
+    job_name       = "${local.project}-job-from-eventbridge"
   }
 
   # Override command
@@ -19,7 +18,7 @@ resource "aws_cloudwatch_event_target" "submit_contracts_batch_job" {
     input_template = <<JSON
 {
   "ContainerOverrides": {
-    "Command": ["python3", "src/main.py", "<object_uploaded>"]
+    "Environment": ["python3", "src/main.py", "<object_uploaded>"]
   }
 }
 JSON

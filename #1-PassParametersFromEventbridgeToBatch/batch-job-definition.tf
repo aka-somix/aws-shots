@@ -28,12 +28,27 @@ resource "aws_batch_job_definition" "demo" {
 #
 resource "aws_iam_role" "service" {
   name               = "${local.project}-demo-servicerole"
-  assume_role_policy = var.assume_role_policy_ecs
+  assume_role_policy = data.aws_iam_policy_document.ecs_assume_role.json
 }
 
 resource "aws_iam_role" "task_exec" {
   name               = "${local.project}-demo-taskexecutionrole"
-  assume_role_policy = var.assume_role_policy_ecs
+  assume_role_policy = data.aws_iam_policy_document.ecs_assume_role.json
+}
+
+data "aws_iam_policy_document" "ecs_assume_role" {
+  statement {
+    actions = [
+      "sts:AssumeRole"
+    ]
+    effect = "Allow"
+
+    principals {
+      type        = "Service"
+      identifiers = ["ecs-tasks.amazonaws.com"]
+    }
+
+  }
 }
 
 resource "aws_iam_role_policy_attachment" "ecs_execution" {
