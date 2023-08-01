@@ -1,4 +1,4 @@
-# aws-shots
+# AWS-Shots 🥃
 
 ![terraform](https://img.shields.io/badge/Terraform-8A2BE2?logo=terraform&style=for-the-badge)  
 ![AWS](https://img.shields.io/badge/Amazon%20Web%20Services-FF9900?style=for-the-badge&logo=amazonaws&logoColor=303080)
@@ -12,3 +12,4 @@
 Each folder of this repository is linked to an "AWS-Shot" issue on Medium. You can use this code to try out in a hands-on environment the solutions proposed in the article.  
 For each folder, you will find a guide on deploying, testing and destroying the AWS Architecture.
 
+![footer](assets/footer.jpg)
