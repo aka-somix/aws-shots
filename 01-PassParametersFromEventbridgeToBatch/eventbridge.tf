@@ -25,7 +25,7 @@ resource "aws_cloudwatch_event_target" "submit_contracts_batch_job" {
   # Override command
   input_transformer {
     input_paths = {
-      source  = "$.detail.source",
+      source  = "$.source",
       message = "$.detail.message"
     }
     input_template = <<JSON
@@ -33,12 +33,12 @@ resource "aws_cloudwatch_event_target" "submit_contracts_batch_job" {
   "ContainerOverrides": {
     "Environment": [
       {
-        "name": "SOURCE",
-        "value": "<source>"
+        "Name": "SOURCE",
+        "Value": "<source>"
       },
       {
-        "name": "MESSAGE",
-        "value": "<message>"
+        "Name": "MESSAGE",
+        "Value": "<message>"
       }
     ]
   }

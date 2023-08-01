@@ -1,0 +1,7 @@
+[
+    {
+        "Source": "aws-shot-1",
+        "Detail": "{\"message\":\"Hello World\"}",
+        "DetailType": "custom-event-type"
+    }
+]
