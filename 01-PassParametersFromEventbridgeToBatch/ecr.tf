@@ -1,6 +1,8 @@
 resource "aws_ecr_repository" "demo" {
   name = "${local.project}-demo-service"
 
+  force_delete = true
+
   image_scanning_configuration {
     scan_on_push = true
   }
