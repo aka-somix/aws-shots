@@ -2,6 +2,7 @@
 ![footer](.assets/footer.jpg)
 <sup><sub><sub>Picture by [William Krause](https://unsplash.com/@williamk)</sub></sub></sup>  
 
+[![Medium](https://img.shields.io/badge/Follow%20me%20on%20Medium-000000?logo=medium&style=for-the-badge)](https://medium.com/@salvatorecirone)
 
 ## Introduction
 **AWS Shots** is a series of short Medium articles that aims to cover quick yet practical use cases on AWS that often do not make it into official documentation, in an attempt of helping you unlock the true potential of combining and integrating Cloud native (and often serverless) services.
