@@ -1,5 +1,8 @@
 # AWS SHOT 1 - How to Pass Parameters From Eventbridge to AWS Batch
 
+TODO UPDATE WITH REAL LINK!
+[![Medium](https://img.shields.io/badge/Go%20to%20the%20Article-000000?logo=medium&style=for-the-badge)](https://medium.com/@salvatorecirone/NOTFOUND)
+
 
 ## 🚨 DISCLAIMER 🚨
 Despite AWS Batch and Eventbridge only charges per use, other services needed for this demo may have different
@@ -10,9 +13,9 @@ Before using this solution, make sure that you have understood the resources tha
 ## Deploy this solution
 
 ### Prerequisites
-- [Terraform]()
-- [AWS CLI]()
-- [Podman]() (or Docker, but you will need to update the [null_resource here]() and replace podman with docker)
+- [Terraform](https://developer.hashicorp.com/terraform/downloads)
+- [AWS CLI](https://aws.amazon.com/cli/)
+- [Podman](https://podman.io/docs/installation) (or Docker, but you will need to update the [null_resource here]() and replace podman with docker)
 - An AWS Account with a VPC
 
 ### Before Deploying
